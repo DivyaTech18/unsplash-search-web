@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Unsplash Image Search</title>
+    <meta name="description" content="Search and browse beautiful photos from Unsplash." />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">Unsplash Image Search</h1>
+            <form id="search-form" class="search-form" novalidate>
+                <input
+                    id="search-input"
+                    class="search-input"
+                    type="text"
+                    name="query"
+                    placeholder="Search for photos (e.g., mountains, cats, city)..."
+                    autocomplete="off"
+                    aria-label="Search photos"
+                />
+                <button id="search-button" class="search-button" type="submit" aria-label="Search">Search</button>
+            </form>
+            <p id="status" class="status hidden" role="status" aria-live="polite"></p>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div id="gallery" class="gallery container" aria-live="polite"></div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>
+                Photos provided by
+                <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>.
+            </p>
+        </div>
+    </footer>
+
+    <script src="./script.js" defer></script>
+    <!--
+        To use: replace ACCESS_KEY in script.js with your Unsplash access key.
+        Get one at https://unsplash.com/developers
+    -->
+</body>
+</html>
+
+

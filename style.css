@@ -1,0 +1,204 @@
+/*
+  Unsplash Image Search - Styles
+  - Uses Flexbox for header layout
+  - Uses CSS Grid for the responsive image gallery
+*/
+
+:root {
+    --bg: #0f172a;            /* slate-900 */
+    --panel: #111827;         /* gray-900 */
+    --text: #e5e7eb;          /* gray-200 */
+    --muted: #9ca3af;         /* gray-400 */
+    --accent: #3b82f6;        /* blue-500 */
+    --accent-600: #2563eb;    /* blue-600 */
+    --card: #111827;          /* gray-900 */
+    --shadow: rgba(0, 0, 0, 0.25);
+}
+
+/* Basic reset */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    color: var(--text);
+    background: linear-gradient(180deg, #0b1220, var(--bg));
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* Header */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.site-title {
+    margin: 0;
+    padding: 20px 0 8px 0;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+.search-form {
+    display: flex;           /* Flexbox used here */
+    gap: 10px;
+    align-items: center;
+    padding: 12px 0 18px 0;
+}
+
+.search-input {
+    flex: 1 1 auto;
+    min-width: 120px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: #0b1220;
+    color: var(--text);
+    outline: none;
+}
+
+.search-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+.search-button {
+    flex: 0 0 auto;
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: linear-gradient(180deg, var(--accent), var(--accent-600));
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    filter: brightness(1.05);
+}
+
+.search-button:active {
+    transform: translateY(1px);
+}
+
+.status {
+    margin: 0 0 16px 0;
+    color: var(--muted);
+    min-height: 20px; /* reserve space to avoid layout shift */
+}
+
+.hidden {
+    display: none;
+}
+
+/* Main */
+.site-main {
+    padding: 18px 0 40px 0;
+}
+
+/* Responsive grid for images */
+.gallery {
+    display: grid;            /* CSS Grid used here */
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.card {
+    background: var(--card);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px var(--shadow);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.card:hover {
+    transform: translateY(-3px) scale(1.02); /* subtle hover effect */
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+.card-media {
+    position: relative;
+    aspect-ratio: 4/3; /* gives a nice consistent grid; image will auto-size if taller */
+    background: #0b1220;
+}
+
+.card-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 10px 12px 12px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.card-title {
+    margin: 0;
+    font-size: 14px;
+    color: var(--text);
+}
+
+.byline {
+    margin: 0;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.byline a {
+    color: var(--text);
+}
+
+/* Footer */
+.site-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 18px 0 28px 0;
+    text-align: center;
+    color: var(--muted);
+}
+
+/* Small screens */
+@media (max-width: 640px) {
+    .site-title {
+        font-size: 20px;
+    }
+    .search-button {
+        padding: 12px 14px;
+    }
+    .gallery {
+        gap: 12px;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    }
+}
+
+
