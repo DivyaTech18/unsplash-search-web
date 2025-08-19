@@ -11,18 +11,32 @@
 <body>
     <header class="site-header">
         <div class="container">
-            <h1 class="site-title">Unsplash Image Search</h1>
+            <div class="header-top">
+                <h1 class="site-title">Unsplash Image Search</h1>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
             <form id="search-form" class="search-form" novalidate>
-                <input
-                    id="search-input"
-                    class="search-input"
-                    type="text"
-                    name="query"
-                    placeholder="Search for photos (e.g., mountains, cats, city)..."
-                    autocomplete="off"
-                    aria-label="Search photos"
-                />
-                <button id="search-button" class="search-button" type="submit" aria-label="Search">Search</button>
+                <div class="search-container">
+                    <input
+                        id="search-input"
+                        class="search-input"
+                        type="text"
+                        name="query"
+                        placeholder="Search for photos (e.g., mountains, cats, city)..."
+                        autocomplete="off"
+                        aria-label="Search photos"
+                    />
+                    <button id="search-button" class="search-button" type="submit" aria-label="Search">Search</button>
+                </div>
+                <div id="search-history" class="search-history hidden">
+                    <div class="history-header">
+                        <span>Recent searches:</span>
+                        <button id="clear-history" class="clear-history-btn" type="button">Clear</button>
+                    </div>
+                    <div id="history-list" class="history-list"></div>
+                </div>
             </form>
             <p id="status" class="status hidden" role="status" aria-live="polite"></p>
         </div>
@@ -30,6 +44,9 @@
 
     <main class="site-main">
         <div id="gallery" class="gallery container" aria-live="polite"></div>
+        <div id="load-more-container" class="load-more-container hidden">
+            <button id="load-more-btn" class="load-more-btn">Load More Images</button>
+        </div>
     </main>
 
     <footer class="site-footer">
